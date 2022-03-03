@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-@RestController
+@RestController //ResponseBody + Controller
 public class ResponseBodyController {
 
     @GetMapping("/response-body-string-v1")
@@ -41,6 +41,7 @@ public class ResponseBodyController {
         return new ResponseEntity<>(helloData, HttpStatus.OK);
     }
 
+    //위의 엔티티 같은 경우 httpStatus를 지정할 수 있는데, response같은 경우 안 된다.
     @ResponseStatus(HttpStatus.OK)
 //    @ResponseBody
     @GetMapping("/response-body-json-v2")
@@ -51,4 +52,6 @@ public class ResponseBodyController {
         return helloData;
     }
 
+    private class IOException extends Exception {
+    }
 }
